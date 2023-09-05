@@ -72,7 +72,7 @@ generate_clone_script() {
 
 generate_repo_scripts() {
     local script_name;
-    for script_name in "configure" "build" "clean"; do (
+    for script_name in "configure" "build" "clean" "checkout"; do (
         cat ${TMPL}/${script_name}.tmpl.sh     \
       | generate_script "${script_name}-${NAME}";
     ) || true;
@@ -243,10 +243,15 @@ generate_scripts() {
             done
 
             (
-                NAME="${repo_name:-}"    \
-                PY_LIB="${py_libs[@]}"   \
-                CPP_LIB="${cpp_libs[@]}" \
-                generate_repo_scripts    ;
+                NAME="${repo_name:-}"             \
+                SRC_PATH="${!repo_path:-}"        \
+                GIT_TAG="${!git_tag:-}"           \
+                GIT_REPO="${!git_repo:-}"         \
+                GIT_HOST="${!git_host:-}"         \
+                GIT_UPSTREAM="${!git_upstream:-}" \
+                PY_LIB="${py_libs[@]}"            \
+                CPP_LIB="${cpp_libs[@]}"          \
+                generate_repo_scripts             ;
             ) || true;
         fi
     done
@@ -257,7 +262,7 @@ generate_scripts() {
 
     unset cpp_name_to_path;
 
-    for script in "clone" "clean" "configure" "build"; do
+    for script in "clone" "clean" "configure" "build" "checkout"; do
         # Generate a script to run a script for all repos
         (
             NAMES="${repo_name_all[@]}"       \
@@ -275,5 +280,6 @@ fi
 (remove_script_for_pattern '^clean-[A-Za-z\-_]*$');
 (remove_script_for_pattern '^build-[A-Za-z\-_]*$');
 (remove_script_for_pattern '^configure-[A-Za-z\-_]*$');
+(remove_script_for_pattern '^checkout-[A-Za-z\-_]*$');
 
 (generate_scripts "$@");

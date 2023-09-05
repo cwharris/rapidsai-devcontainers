@@ -44,29 +44,30 @@ install_utility() {
     update-alternatives --install "/usr/bin/$1" "$1" "/opt/devcontainer/bin/$2" 0;
 }
 
-install_utility devcontainer-utils-parse-args parse-args.sh;
-install_utility devcontainer-utils-shell-is-interactive shell-is-interactive.sh;
-install_utility devcontainer-utils-post-attach-command post-attach-command.sh;
-install_utility devcontainer-utils-post-attach-command-entrypoint post-attach-command-entrypoint.sh;
-install_utility devcontainer-utils-python-repl-startup python-repl-startup.py;
-install_utility devcontainer-utils-init-git git/init.sh;
-install_utility devcontainer-utils-clone-git-repo git/repo/clone.sh;
+install_utility devcontainer-utils-parse-args                           parse-args.sh;
+install_utility devcontainer-utils-shell-is-interactive                 shell-is-interactive.sh;
+install_utility devcontainer-utils-post-attach-command                  post-attach-command.sh;
+install_utility devcontainer-utils-post-attach-command-entrypoint       post-attach-command-entrypoint.sh;
+install_utility devcontainer-utils-python-repl-startup                  python-repl-startup.py;
+install_utility devcontainer-utils-init-git                             git/init.sh;
+install_utility devcontainer-utils-clone-git-repo                       git/repo/clone.sh;
+install_utility devcontainer-utils-checkout-git-repo                    git/repo/checkout.sh;
 
-install_utility devcontainer-utils-init-github-cli   github/cli/init.sh;
-install_utility devcontainer-utils-clone-github-repo github/repo/clone.sh;
+install_utility devcontainer-utils-init-github-cli                      github/cli/init.sh;
+install_utility devcontainer-utils-clone-github-repo                    github/repo/clone.sh;
 
-install_utility devcontainer-utils-init-gitlab-cli                    gitlab/cli/init.sh;
-install_utility devcontainer-utils-clone-gitlab-repo                  gitlab/repo/clone.sh;
-install_utility devcontainer-utils-print-missing-gitlab-token-warning gitlab/print-missing-token-warning.sh;
+install_utility devcontainer-utils-init-gitlab-cli                      gitlab/cli/init.sh;
+install_utility devcontainer-utils-clone-gitlab-repo                    gitlab/repo/clone.sh;
+install_utility devcontainer-utils-print-missing-gitlab-token-warning   gitlab/print-missing-token-warning.sh;
 
-install_utility devcontainer-utils-vault-auth-github vault/auth/github.sh;
+install_utility devcontainer-utils-vault-auth-github                    vault/auth/github.sh;
 
-install_utility devcontainer-utils-vault-s3-init            vault/s3/init.sh;
-install_utility devcontainer-utils-vault-s3-creds-generate  vault/s3/creds/generate.sh;
-install_utility devcontainer-utils-vault-s3-creds-persist   vault/s3/creds/persist.sh;
-install_utility devcontainer-utils-vault-s3-creds-propagate vault/s3/creds/propagate.sh;
-install_utility devcontainer-utils-vault-s3-creds-schedule  vault/s3/creds/schedule.sh;
-install_utility devcontainer-utils-vault-s3-creds-test      vault/s3/creds/test.sh;
+install_utility devcontainer-utils-vault-s3-init                        vault/s3/init.sh;
+install_utility devcontainer-utils-vault-s3-creds-generate              vault/s3/creds/generate.sh;
+install_utility devcontainer-utils-vault-s3-creds-persist               vault/s3/creds/persist.sh;
+install_utility devcontainer-utils-vault-s3-creds-propagate             vault/s3/creds/propagate.sh;
+install_utility devcontainer-utils-vault-s3-creds-schedule              vault/s3/creds/schedule.sh;
+install_utility devcontainer-utils-vault-s3-creds-test                  vault/s3/creds/test.sh;
 
 # Enable GCC colors
 for_each_user_bashrc 'sed -i -re "s/^#(export GCC_COLORS)/\1/g" "$0"';
