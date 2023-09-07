@@ -129,7 +129,8 @@ generate_cpp_scripts() {
     local cpp_source="${SRC_PATH:-}${CPP_SRC:+/$CPP_SRC}";
 
     cat ${TMPL}/args-repo-cpp-lib.tmpl.sh \
-    | generate_script "args-${NAME}-cpp-${CPP_LIB}";
+      | CPP_SRC=$cpp_source \
+        generate_script "args-${NAME}-cpp-${CPP_LIB}";
 
     # build lib
     for script_name in "inplace" "dist"; do
@@ -150,6 +151,9 @@ generate_cpp_scripts() {
 }
 
 generate_python_scripts() {
+    cat ${TMPL}/args-repo-python-package.tmpl.sh \
+      | generate_script "args-${NAME}-python-${PY_LIB}";
+
     local script_name;
     for script_name in "inplace" "dist" ; do
         cat ${TMPL}/build-repo-${script_name}-python-package.tmpl.sh      \

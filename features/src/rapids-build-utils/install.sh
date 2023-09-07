@@ -50,6 +50,12 @@ update-alternatives --install /usr/bin/rapids-python-pkg-names              rapi
 update-alternatives --install /usr/bin/rapids-python-conda-pkg-names        rapids-python-conda-pkg-names       /opt/rapids-build-utils/bin/python-conda-pkg-names.sh       0;
 update-alternatives --install /usr/bin/rapids-get-num-archs-jobs-and-load   rapids-get-num-archs-jobs-and-load  /opt/rapids-build-utils/bin/get-num-archs-jobs-and-load.sh  0;
 update-alternatives --install /usr/bin/rapids-list-repos                    rapids-list-repos                   /opt/rapids-build-utils/bin/list-repos.sh                   0;
+update-alternatives --install /usr/bin/rapids-build-cpp-inplace             rapids-build-cpp-inplace            /opt/rapids-build-utils/bin/build-cpp-inplace.sh            0;
+update-alternatives --install /usr/bin/rapids-build-cpp-dist                rapids-build-cpp-dist               /opt/rapids-build-utils/bin/build-cpp-dist.sh               0;
+update-alternatives --install /usr/bin/rapids-build-python-inplace          rapids-build-python-inplace         /opt/rapids-build-utils/bin/build-python-inplace.sh         0;
+update-alternatives --install /usr/bin/rapids-build-python-dist             rapids-build-python-dist            /opt/rapids-build-utils/bin/build-python-dist.sh            0;
+update-alternatives --install /usr/bin/rapids-configure-cpp-inplace         rapids-configure-cpp-inplace        /opt/rapids-build-utils/bin/configure-cpp-inplace.sh        0;
+update-alternatives --install /usr/bin/rapids-configure-cpp-dist            rapids-configure-cpp-dist           /opt/rapids-build-utils/bin/configure-cpp-dist.sh           0;
 
 find /opt/rapids-build-utils \
     \( -type d -exec chmod 0775 {} \; \
