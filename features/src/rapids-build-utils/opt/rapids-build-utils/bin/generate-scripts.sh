@@ -123,6 +123,9 @@ generate_cpp_scripts() {
     local script_name;
     local cpp_source="${SRC_PATH:-}${CPP_SRC:+/$CPP_SRC}";
 
+    cat ${TMPL}/args-repo-cpp-lib.tmpl.sh \
+    | generate_script "args-${NAME}-cpp-${CPP_LIB}";
+
     # build lib
     for script_name in "inplace" "dist"; do
         cat ${TMPL}/build-repo-${script_name}-cpp-lib.tmpl.sh \
